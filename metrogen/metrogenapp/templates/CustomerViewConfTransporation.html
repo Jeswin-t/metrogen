@@ -1,0 +1,41 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+{% if datas %}
+<table class="customers">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Vehicle</th>
+        <th>Vehicle Number</th>
+        <th>Model</th>
+        <th>Transportation Station</th>
+        <th>Destination</th>
+        <th>Status</th>
+        <th>Cancel</th>
+    </tr>
+    {% for d in datas %}
+    {% for s in details %}
+    <tr>
+        <td>{{s.name}}</td>
+        <td>{{s.adrs}}</td>
+        <td>{{s.vehicle}}</td>
+        <td>{{s.regnum}}</td>
+        <td>{{s.model}}</td>
+        <td>{{s.station}}</td>
+        <td>{{d.destination}}</td>
+        <td>{{d.status}}</td>
+        {%if d.status == 'Booked' %}
+        <td class=""><a href="/CancelBooking?id={{d.bkid}}" class="btn btn-primary">Cancel</a> </td>
+        {%else%}
+        <td>Unavailable to Cancel</td>
+        {%endif%}
+    </tr>
+    {% endfor %}
+    {% endfor %}
+</table>
+{% else %}
+    <h1>No more transportations found</h1>
+    {% endif %}
+{% endblock %}

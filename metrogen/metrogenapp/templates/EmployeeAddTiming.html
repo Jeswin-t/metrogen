@@ -1,0 +1,21 @@
+{% extends 'EmployeePage.html' %}
+{% block body %}
+
+
+
+    <form action="AdminAddTiming" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="Timing_file">
+
+        <input type="submit" value="Add Now" name="ADD" class="but"/>
+        </form>
+        {% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+        <br/>
+        <br/>
+        
+        </form>
+        {% endblock %}

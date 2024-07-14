@@ -1,0 +1,60 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                
+                <br/>
+                <br/>
+               		
+                <table align="center">
+            
+                   
+                    <tr>
+                        <td>Search Homestay By Metro Station</td>
+                        <td><select name="dist" value=" " class="textbox" style="color: deeppink;">
+                            <option>---Select Station---</option>
+                                {%for c in station %}
+                            <option value="{{c.1}}">{{c.1}}</option>
+                                {% endfor %}
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Search Now" name="Book" class="but"/></td>
+                    </tr>
+                </table>
+<br/>
+<br/>
+<br/>
+{% if data %}
+                <table class="customers">
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>  
+                        <th>Phone</th>  
+                        <th>Description</th> 
+                        <th>Image</th> 
+                    </tr>
+                    {% for d in data %}
+                    <tr>
+                        <td>{{d.0}}</td>
+                        <td>{{d.1}}</td>
+                        <td>{{d.2}}</td>
+                        <td>{{d.5}}</td>
+                        <td>{{d.6}}</td>
+                        <td><img src="../static{{d.7}}" width="200px" height="100px" alt=""/></td>
+                        <td><a href="/CustomerSearchStay/?id={{d.0}}">Book Now</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+             
+    {% endif %} 
+            </form> 
+      
+{% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

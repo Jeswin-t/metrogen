@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../static/project/css/signup.css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Registration / Login form Responsive Widget, Login forms,Flat Pricing tables,Flat Drop downs  Sign up Web forms, Login sign up Responsive web Forms," />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom CSS -->
+<!-- font CSS -->
+<link href="//fonts.googleapis.com/css?family=Signika:300,400,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+
+<!--font CSS-->
+<script src="../static/Login/js/jquery2.0.3.min.js"></script>
+</head>
+</head>
+<body>
+{% if Message %}
+    <div class="alert alert-success alert-dismissible fade show  w-100 mt-5 text-center" role="alert">
+      <strong>{{Message}}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+{% block body %}
+<div class="loginbox">
+	<img src="{%static 'project/images/addfriend.png'%}" class="avatar">
+	<h1>Signup</h1>
+	<form data-toggle="validator"  method="post" onsubmit="return validatePassword()">
+		{% csrf_token %}
+			<p>Name</p>
+			<input type="text" class="form-control" id="inputName" name="cname" placeholder="Enter the Name" required="">
+			<p>Address</p>
+			<input type="text" class="form-control" id="inputName" name="address" placeholder="Enter the Address" required="">
+			<p>Pincode</p>
+			<input type="text" class="form-control" id="inputName" name="pincode" placeholder="Enter the Pincode" required="">
+												<div class="form-group">
+												<div class="radio">
+													<p>Male</p>
+													  <input type="radio" name="gender" value="Male" required="">
+												</div>
+												<div class="radio">
+												<p>Female</p>
+													<input type="radio" name="gender" value="Female" required="">
+												</div>
+												</div>
+											<p>Age</p>
+											<input type="text" class="form-control" id="inputName" name="age" placeholder="Enter your Age" required="">
+											<p>District</p>
+											<input type="text" class="form-control" id="inputName" name="district" placeholder="District" required="">
+											<p>Location</p>
+											<input type="text" class="form-control" id="inputName" name="location" placeholder="Location" required="">
+											<div class="form-group has-feedback">
+												<p>Email</p>
+												<input type="email" class="form-control" name="Email" placeholder="Email" data-error="That email address is invalid" required="">
+												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+												<span class="help-block with-errors">Please enter a valid email address</span>
+											</div>
+											<p>Mobile No</p>
+											<input type="text" class="form-control" id="inputmobile" name="mobile" placeholder="Mobile" required pattern="[0-9]{10}">
+
+											<div class="form-group">
+												<div class="checkbox">
+												<p>Password</p>
+											  <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="Password" placeholder="Password" required="" oninput="clearMessage()">
+											  <span class="help-block">Minimum of 6 characters</span>
+													<div class="" id="validate" style="color:red;"></div>
+											</div>
+
+											<div class="form-group">
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" id="terms" data-error="Before you wreck yourself" required="">
+														I have read and accept terms of use.
+													</label>
+													<div class="help-block with-errors"></div>
+												</div>
+											</div>
+											<div class="form-group">
+												<button type="submit" name="submit" class="btn btn-danger" style="    width: 100%;height: 40px;color: white;background-color: red;border-radius: 15px; margin-top: 6px;">Submit</button>
+											</div>
+										</form>
+		</div>
+
+										{% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+<script>
+       function clearMessage() {
+            var messageElement = document.getElementById("validate");
+            messageElement.innerHTML = "";
+        }
+
+        function validatePassword() {
+            var password = document.getElementById("inputPassword").value;
+            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            var messageElement = document.getElementById("validate");
+
+            if (passwordPattern.test(password)) {
+                messageElement.innerHTML = "Password is valid!";
+                return true;
+            } else {
+                messageElement.innerHTML = "Password is not valid. It must contain at least 8 characters, including at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+                return false;
+            }
+        }
+</script>
+
+
+										{% endblock %}

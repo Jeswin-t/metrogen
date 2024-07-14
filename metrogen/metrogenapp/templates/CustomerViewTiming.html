@@ -1,0 +1,21 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+<table class="customers">
+    <tr>
+        <th>Uploaded Date</th>
+        <th>Chart</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.Updated_Date}}</td>
+        <div class="cssglider">
+        <td>
+            <img src="../static/project/images/kj.jpg">
+        </td>
+        </div>
+    </tr>
+</table>
+    {% endfor %}
+{%endblock %}
+</body>
+</html>

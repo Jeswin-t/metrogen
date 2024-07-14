@@ -1,0 +1,38 @@
+{% extends 'EmployeePage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+{% if data %}
+<table class="customers">
+    <tr>
+        <th>Vehicle Owner Name</th>
+        <th>Address</th>
+        <th>Vehicle</th>
+        <th>Model</th>
+        <th>Driving License</th>
+        <th>Transportation Station</th>
+        <th>Customer Name</th>
+        <th>Destination</th>
+    </tr>
+    {% for f in data %}
+    {% for d in details %}
+    {% for c in cust %}
+
+    <tr>
+        <td>{{d.name}}</td>
+        <td>{{d.adrs}}</td>
+        <td>{{d.vehicle}}</td>
+        <td>{{d.model}}</td>
+        <td>{{d.driving}}</td>
+        <td>{{d.station}}</td>
+        <td>{{c.cname}}</td>
+        <td>{{f.destination}}</td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+</table>
+{% else %}
+    <h1>No more transportations found</h1>
+    {% endif %}
+{% endblock %}

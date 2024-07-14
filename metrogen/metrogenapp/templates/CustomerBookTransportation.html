@@ -1,0 +1,35 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+
+<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}		
+        <table align="center">
+            <tr>
+                <td><label >Date For Travel</label></td>
+                <td><input type="date" name="cdate" required class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Time</label></td>
+                <td><input type="time" name="Time" required class="textbox"></td>
+            </tr>
+            
+            <tr>
+                <td><label>Destination</label></td>
+                <td><input type="text" name="Destination" required class="textbox"></td>
+            </tr>
+            
+            <tr>
+                <td><input type="submit" value="Book Now" name="ADD" class="but"/></td>
+            </tr>
+
+        </table>
+        {% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+        <br/>
+        <br/>
+        
+        </form>
+        {% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'EmployeePage.html' %}
+{% block body %}
+
+<form method="POST">
+		{% csrf_token %}		
+        <table align="center">
+            <tr>
+                <td><label >Notification Reference</label></td>
+                <td><input type="text" name="ref" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Number of Vaccancy</label></td>
+                <td><input type="text" name="vaccancy" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Position</label></td>
+                <td><input type="text" name="position" class="textbox"></td>
+            </tr>
+            
+            <tr>
+                <td><label>Qualification</label></td>
+                <td><input type="text" name="quali" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Application Start</label></td>
+                <td><input type="date" name="start" class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Application End</label></td>
+                <td><input type="date" name="end" class="textbox"></td>
+            </tr>
+            
+            <tr>
+                <td><input type="submit" value="Add Now" name="ADD" class="but"/></td>
+            </tr>
+        </table>
+        {% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+        <br/>
+        <br/>
+        
+        </form>
+        {% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+<table class="customers">
+    <tr>
+        <th>Reference ID</th>
+        <th>Number of Vaccancy</th>
+        <th>Position</th>
+        <th>Qualification</th>   
+        <th>Application Start</th>  
+        <th>Application End</th>    
+
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.ref}}</td>
+        <td>{{d.vaccancy}}</td>
+        <td>{{d.position}}</td>
+        <td>{{d.quali}}</td>
+        <td>{{d.start}}</td>
+        <td>{{d.end}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

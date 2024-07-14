@@ -1,0 +1,55 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+
+<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}		
+        <table align="center">
+            <tr>
+                <td><label >Name</label></td>
+                <td><input type="text" name="hname" required class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Address</label></td>
+                <td><input type="text" name="address" required class="textbox"></td>
+            </tr>
+            <tr>
+                <td><label>Nearest Station</label></td>
+                <td><select name="dist" value=" " required class="textbox" style="color: deeppink;">
+                    <option>---Select Station---</option>
+                        {%for c in cat %}
+                    <option value="{{c.stations}}">{{c.stations}}</option>
+                        {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>Location</label></td>
+                <td><input type="text" name="location" class="textbox" required ></td>
+            </tr>
+            
+            <tr>
+                <td><label>Phone</label></td>
+                <td><input type="text" name="phone" class="textbox" pattern="[0-9]{10}" title="please enter 10 digit number"required ></td>
+            </tr>
+            <tr>
+                <td><label>Description</label></td>
+                <td><input type="text" name="desc" class="textbox" required></td>
+            </tr>
+            <tr>
+                <td><label>Image</label></td>
+                <td><input type="file" name="file" class="textbox" required></td>
+            </tr>
+            
+            <tr>
+                <td><input type="submit" value="Add Now" name="ADD" class="but"/></td>
+            </tr>
+        </table>
+        {% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+        <br/>
+        <br/>
+        
+        </form>
+        {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                
+                <br/>
+                <br/>
+               		
+                <table align="center">
+            
+                   
+                    <tr>
+                        <td><label>Post your feedback</label></td>
+                        <td><input type="text" name="pname" required class="textboxx"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Post Now" name="Book" class="but"/></td>
+                    </tr>
+                </table>
+            </form> 
+      
+{% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

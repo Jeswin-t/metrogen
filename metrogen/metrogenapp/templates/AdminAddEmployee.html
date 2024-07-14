@@ -1,0 +1,50 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+
+<form method="POST">
+		{% csrf_token %}		
+        <table align="center">
+            <tr>
+                <td><label >Employee Name</label></td>
+                <td><input type="text" name="hname" class="textbox" required></td>
+            </tr>
+            <tr>
+                <td><label>Address</label></td>
+                <td><input type="text" name="address" class="textbox" required ></td>
+            </tr>
+            <tr>
+                <td><label>Designation</label></td>
+                <td><input type="text" name="desig" class="textbox" required></td>
+            </tr>
+            <tr>
+                <td><label>Salary</label></td>
+                <td><input type="text" name="salary" class="textbox" required></td>
+            </tr>
+            
+            <tr>
+                <td><label>Phone</label></td>
+                <td><input type="text" name="phone" class="textbox" pattern="[0-9]{10}" title="please enter 10 digit number" required></td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="email" name="email" class="textbox" required></td>
+            </tr>
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="password" name="pass" class="textbox" required></td>
+            </tr>
+            
+            <tr>
+                <td><input type="submit" value="Add Now" name="ADD" class="but"/></td>
+            </tr>
+        </table>
+        {% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+        <br/>
+        <br/>
+        
+        </form>
+        {% endblock %}

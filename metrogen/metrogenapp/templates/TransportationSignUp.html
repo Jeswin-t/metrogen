@@ -1,0 +1,67 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Metrogen</title>
+<!-- For-Mobile-Apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Lucid Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //For-Mobile-Apps -->
+    {%load static%}
+<!-- Style --> <link rel="stylesheet" href="../static/project/css/style3.css" type="text/css" media="all" />
+</head>
+<body>
+<div class="container">
+<h1>SIGNUP</h1>
+	<div class="signin">
+         <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+	      	<input type="text" class="user" name="name" value="Name" pattern="[a-zA-Z]+" required="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" />
+            <input type="text" class="user" name="adrs" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}" />
+            <select name="dist">
+                <option value="">---Select Station---</option>
+                {% for d in station %}
+                    <option value={{d.stations}}>{{d.stations}}</option>
+                     {% endfor %}
+            </select>
+            <input type="text" class="user" name="adhar" value="Adhar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Adhar';}" />
+            <input type="text" class="user" name="driving" value="Driving License Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Driving License Number';}" />
+            <select name="vehicle">
+                <option value="0">---Select Vehicle---</option>
+                {% for d in vehicle %}
+                <option value="{{d.vehicle}}">{{d.vehicle}}</option>
+                {% endfor %}
+            </select>
+            <input type="text" class="user" name="model" value="Model" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Model';}" />
+            <input type="number" class="user" name="capacity" value="Seating Capacity" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Seating Capacity';}" placeholder="Seating Capacity"/>
+            <input type="text" class="user" name="regnum" value="Registration Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Vehicle Reg Number';}" />
+            <input type="text" class="user" name="fon" value="Phone" pattern="[0-9]{10}+" minlength="10" maxlength="10" required="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}" />
+             <span class="" style="color: white;font-size: 21px;margin-left: 44px;">FileUpload</span> <input type="file" class="user" name="CarPhoto" value="Photo"  required="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Photo';}" />
+            <input type="email" class="user" name="email" value="Email"  required="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
+            <input type="password" class="pass" name="pass"  pattern="[0-9a-zA-Z]{50}+"  minlength="8" maxlength="50" required="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" placeholder="Password"/>
+	      	<label>
+		  		<input type="checkbox" value="Remember-Me" /> Remember Me?
+		  	</label>
+          	<input type="submit" value="LOGIN" />
+	 	</form>
+	</div>
+
+{% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+<div class="footer">
+     <p>Copyright &copy; 2023 Metrogen. All Rights Reserved | Design by <a href="http://w3layouts.com">Metrogen</a></p>
+</div>
+</div>
+</body>
+</html>

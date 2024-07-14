@@ -1,0 +1,75 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+
+            <form action="#" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                
+                <br/>
+                <br/>
+               		
+                <table align="center">
+            
+                   
+                    <tr>
+                        <td>Search Transportation By Metro Station</td>
+                        <td><select name="dist" value=" " class="textbox" style="color: deeppink;">
+                            <option>---Select Station---</option>
+                                {%for c in station %}
+                            <option value="{{c.stations}}">{{c.stations}}</option>
+                                {% endfor %}
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Select Vehicle</td>
+                        <td><select name="vehicle" value=" " class="textbox" style="color: deeppink;">
+                            <option>---Select Vehicle---</option>
+                                {%for c in vehicle %}
+                            <option value="{{c.Type}}">{{c.Type}}</option>
+                                {% endfor %}
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Search Now" name="Book" class="btn btn-primary"/></td>
+                    </tr>
+                     </form>
+                </table>
+<br/>
+<br/>
+<br/>
+{% if datas %}
+                <table class="customers">
+                    <tr>
+                        <th>Vehicle Photo</th>
+                        <th>Driver Name</th>
+                        <th>Model</th>  
+                        <th>Seating Capacity</th>  
+                        <th>Reg Number</th> 
+                        <th>Phone</th>
+                        <th>action</th>
+                    </tr>
+                    {% for d in datas %}
+                    <tr>
+                        <td><img src="{{d.CarPhoto}}" style="width: 100%;" </td>
+                        <td>{{d.name}}</td>
+                        <td>{{d.model}}</td>
+                        <td>{{d.capacity}}</td>
+                        <td>{{d.regnum}}</td>
+                        <td>{{d.fon}}</td>
+                        <td> <form action="CustomerBookTransport" method="get">
+                            <input type="text" name="id" value="{{d.trspt_id}}" hidden>
+                            <button type="submit" class="btn btn-primary">Book Now</button>
+                        </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+              
+    {% endif %}
+      
+{% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

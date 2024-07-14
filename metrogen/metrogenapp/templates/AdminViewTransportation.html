@@ -1,0 +1,29 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+{% if data %}
+<table class="customers">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Vehicle</th>  
+        <th>Model</th>   
+        <th>Driving License</th> 
+        <th>Transportation Station</th>    
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.name}}</td>
+        <td>{{d.adrs}}</td>
+        <td>{{d.vehicle}}</td>
+        <td>{{d.model}}</td>
+        <td>{{d.driving}}</td>
+        <td>{{d.station}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <h1>No more transportations found</h1>
+    {% endif %} 
+{% endblock %}

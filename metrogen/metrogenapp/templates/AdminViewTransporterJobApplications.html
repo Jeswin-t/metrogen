@@ -1,0 +1,57 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+
+{% if data %}
+<table class="transporters" style="margin-left: -149px;">
+    <tr>
+        <th>Transporter Name</th>
+        <th>Address</th>
+        <th>Station</th>
+        <th>Aadhar</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Driving License</th>
+        <th>Vehicle Type</th>
+        <th>Registration Number</th>
+        <th class="text-wrap">Vehicle Image</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    {% for d in data %}
+
+    <tr>
+        <td>{{d.name}}</td>
+        <td>{{d.adrs}}</td>
+        <td>{{d.station}}</td>
+        <td>{{d.adhar}}</td>
+        <td>{{d.fon}}</td>
+        <td>{{d.email}}</td>
+        <td>{{d.driving}}</td>
+        <td>{{d.vehicle}}</td>
+        <td>{{d.regnum}}</td>
+<!--        <td><a href="{{d.CarPhoto.url}}">{{d.CarPhoto}}</a></td>-->
+        <td><img src="{{d.CarPhoto.url}}"></td>
+        <td>
+        <form action="AdminViewTransporterJobApplications" method="get">
+            {% csrf_token %}
+            <input class="btn btn-primary" type="text" value="{{d.trspt_id}}" name="id" hidden>
+            <input type="text" value="Accept" name="action" hidden>
+            <button type="submit" class="btn btn-primary" >Accept</button>
+
+        </form></td>
+        <td>
+        <form action="AdminViewTransporterJobApplications" method="get">
+            {% csrf_token %}
+            <input type="text" value="{{d.trspt_id}}" name="id" hidden>
+            <input type="text" class="btn btn-primary" value="Reject" name="action" hidden>
+            <button type="submit" class="btn btn-primary" >Reject</button>
+        </form></td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+{% else %}
+    <h1>No more applications found</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'AdminPage.html' %}
+{% block body %}
+
+<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+        <table align="center">
+            <tr>
+                <td><label>From</label></td>
+                <td><select name="From" value=" "  required class="textbox" style="color: deeppink;">
+                    <option>---Select Station---</option>
+                        {%for c in cat %}
+                    <option value="{{c.stations}}">{{c.stations}}</option>
+                        {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>To</label></td>
+                <td><select name="To" value=" " required class="textbox" style="color: deeppink;">
+                    <option>---Select Station---</option>
+                        {%for c in cat %}
+                    <option value="{{c.stations}}">{{c.stations}}</option>
+                        {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>Fair</label></td>
+                <td><input type="number" name="Fair" class="textbox" required></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Add Now" name="ADD" class="but"/></td>
+            </tr>
+        </table>
+        {% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+        <br/>
+        <br/>
+        </form>
+        {% endblock %}

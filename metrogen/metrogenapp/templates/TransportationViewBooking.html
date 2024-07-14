@@ -1,0 +1,41 @@
+{% extends 'TransportationPage.html' %}
+{% block body %}
+{% if data %}
+<table class="customers">
+    <tr>
+        <th>Booking ID</th>
+        <th>Customer</th>
+        <th>Destination</th>  
+        <th>Travel Date</th>
+        <th>Travel Time</th>   
+        <th>Booking Date</th>
+        <th>mobile</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.bkid}}</td>
+        <td>{{d.cid}}</td>
+        <td>{{d.destination}}</td>
+        <td>{{d.date}}</td>
+        <td>{{d.time}}</td>
+        <td>{{d.date}}</td>
+        <td>{{d.mobile}}</td>
+        <td><form action="TransportationViewBooking" method="get">
+            <input type="text" name="id" value="{{d.bkid}}" hidden>
+            <input type="text" name="st" value="Accept"hidden>
+            <button class="btn btn-primary" type="submit">Accept</button>
+        </form></td>
+        <td><form action="TransportationViewBooking" method="get">
+            <input type="text" name="id" value="{{d.bkid}}" hidden>
+            <input type="text" name="st" value="reject"hidden>
+             <button class="btn btn-primary" type="submit">Reject</button>
+        </form></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <h1>No data found</h1>
+    {% endif %} 
+{% endblock %}

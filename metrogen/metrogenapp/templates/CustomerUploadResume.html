@@ -1,0 +1,29 @@
+{% extends 'CustomerPage.html' %}
+{% block body %}
+
+            <form action="# " method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                
+                <br/>
+                <br/>
+               		
+                <table align="center">
+            
+                   
+                    <tr>
+                        <td><label>Upload Your Resume</label></td>
+                        <td><input type="file" name="file"  class="textbox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Upload Now" name="Book" class="but"/></td>
+                    </tr>
+                </table>
+            </form> 
+      
+{% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+                <table border="5" class="">
+                    <tr>
+                        <th>Transportation Reg ID</th>
+                        <th>Driver Name</th>
+                        <th>adhaar</th>
+                        <th>Station</th>
+                        <th>Seating Capacity</th>
+                        <th>Reg Number</th>
+                        <th>Phone</th>
+                        <th>email</th>
+                        <th>passsword</th>
+                        <th>SeatingCapacity</th>
+                        <th>type</th>
+                    </tr>
+                    {% for d in datas %}
+                    <tr>
+                        <td>{{d.trspt_id}}</td>
+                        <td>{{d.name}}</td>
+                        <td>{{d.adrs}}</td>
+                        <td>{{d.station}}</td>
+                        <td>{{d.adhar}}</td>
+                        <td>{{d.capacity}}</td>
+                        <td>{{d.regnum}}</td>
+                        <td>{{d.fon}}</td>
+                        <td>{{d.email}}</td>
+                        <td>{{d.password}}</td>
+                        <td>{{d.SeatingCapacity}}</td>
+                        <td>{{d.type}}</td>
+
+
+
+
+
+                        <td><a href="/CustomerSearchTransportation/?id={{d.0}}">Book Now</a></td>
+                    </tr>
+                    {{datas}}
+                    {% endfor %}
+                </table>
+
+
+</body>
+</html>

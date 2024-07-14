@@ -1,0 +1,31 @@
+{% extends 'TransportationPage.html' %}
+{% block body %}
+<form action="#" method="post" >
+{% csrf_token %}
+{% if data %}
+<table class="customers">
+    <tr>
+        <th>Booking ID</th>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Destination</th>  
+        <th>Travel Date</th>
+        <th>Travel Time</th>   
+        <th>Booking Date</th>  
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d.bkid}}</td>
+        <td>{{d.cid}}</td>
+        <td>{{d.phone}}</td>
+        <td>{{d.destination}}</td>
+        <td>{{d.date}}</td>
+        <td>{{d.time}}</td>
+        <td>{{d.date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <h1>No data found</h1>
+    {% endif %} 
+{% endblock %}

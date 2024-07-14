@@ -1,0 +1,39 @@
+{% extends 'CommonPage.html' %}
+
+
+{% block body %}
+<div class="form-body form-body-info">
+<!--        <form action="chk" method="post" >-->
+                {% csrf_token %}
+            <div class="form-group has-feedback"align="center">
+                <input type="email" class="form-control" name="email" placeholder="Enter Your Email" data-error="Bruh, that email address is invalid" required="">
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            </div>
+            <div class="form-group"align="center">
+                <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword1" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" title="Password must contain at least 8 characters, including at least one number, one lowercase letter, one uppercase letter, and one special character (!@#$%^&*)" placeholder="Password" required="">
+            </div>
+    <h5 style="color:white;">Password must contain at least 8 characters,any letters capital including at least one number.</h5>
+            <div class="bottom">
+                <div class="form-group">
+                    <div class="checkbox"align="center">
+                        <label>
+                            <input type="checkbox" id="terms1" data-error="Before you wreck yourself" required="">
+                            Remember me
+                        </label>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="login-container">
+                <div class="form-group"align="center">
+                    <button type="submit" class="" name="submit">Login</button>
+                </div>
+                </div>
+            </div>
+        </form>
+</div>
+                {% if msg %}
+<script>
+alert("{{msg}}")
+</script>
+{% endif %}
+                {% endblock %}
